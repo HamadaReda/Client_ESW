@@ -9,6 +9,7 @@ import { dataTabelStyle } from "../../../layout/dataTabelStyle";
 import { useParams } from 'react-router-dom'; // Import useParams to get URL parameters
 import GoBackButton from "../../../components/Admin/Buttons/GoBackButton";
 import axios from "axios"; // Import axios for API calls
+import { BASE_URL } from "../../../constants";
 
 const SingleCustomerDetails = () => {
   const { id } = useParams(); // Get the customer ID from the URL
@@ -18,7 +19,7 @@ const SingleCustomerDetails = () => {
     // Fetch customer data based on the ID
     const fetchCustomerData = async () => {
       try {
-        const response = await axios.get(`https://server-esw.up.railway.app/api/v1/admins/${id}`, {
+        const response = await axios.get(`${BASE_URL}/admins/${id}`, {
           withCredentials: true,
         });
 

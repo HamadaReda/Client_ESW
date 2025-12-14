@@ -7,6 +7,7 @@ import axios from "axios";
 import AuthLinks from "./AuthLinks";
 import UserDropdown from "./UserDropDown";
 import DarkModeSwitcher from "../../Admin/Header/DarkModeSwitcher";
+import { BASE_URL } from "../../../constants";
 
 const UserHeader = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -31,7 +32,7 @@ const UserHeader = () => {
     const checkAuth = async () => {
       try {
         const response = await axios.get(
-          "https://server-esw.up.railway.app/api/v1/users/profile",
+          `${BASE_URL}/users/profile`,
           { withCredentials: true }
         );
         if (response.data && response.data.data) {

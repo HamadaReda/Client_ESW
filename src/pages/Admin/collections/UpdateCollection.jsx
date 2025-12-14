@@ -12,6 +12,7 @@ import { Toast } from "primereact/toast";
 import MediaUpload from "../../../components/Admin/MediaUpload/MediaUpload";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../../constants";
 
 const UpdateCollection = () => {
   const { id } = useParams(); // الحصول على الـ id من الـ URL
@@ -35,7 +36,7 @@ const UpdateCollection = () => {
     const fetchCollectionData = async () => {
       try {
         const response = await axios.get(
-          `https://server-esw.up.railway.app/api/v1/categories/${id}`
+          `${BASE_URL}/categories/${id}`
         );
         const { title, description, image, banner, isBannerVisible } =
           response.data.data;
@@ -86,7 +87,7 @@ const UpdateCollection = () => {
       formData.append("description", description); // إرسال الوصف كـ HTML
       formData.append("isBannerVisible", isBannerVisible); // تحديث البيانات باستخدام PUT أو PATCH
       const updateResponse = await axios.patch(
-        `https://server-esw.up.railway.app/api/v1/categories/${id}`,
+        `${BASE_URL}/categories/${id}`,
         formData,
         {
           headers: {
@@ -103,7 +104,7 @@ const UpdateCollection = () => {
 
         // رفع الصورة
         const imageResponse = await axios.patch(
-          `https://server-esw.up.railway.app/api/v1/categories/category-photo-upload/${id}`,
+          `${BASE_URL}/categories/category-photo-upload/${id}`,
           formData,
           {
             withCredentials: true,
@@ -129,7 +130,7 @@ const UpdateCollection = () => {
 
         // رفع الصورة
         const imageResponse = await axios.patch(
-          `https://server-esw.up.railway.app/api/v1/categories/category-banner-upload/${id}`,
+          `${BASE_URL}/categories/category-banner-upload/${id}`,
           formBannerData,
           {
             withCredentials: true,

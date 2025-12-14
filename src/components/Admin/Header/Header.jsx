@@ -6,6 +6,7 @@ import { FaBars } from "react-icons/fa6";
 import axios from "axios";
 import UserDropdown from "../../Client/Header/UserDropDown";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../../constants";
 
 const Header = (props) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -22,7 +23,7 @@ const Header = (props) => {
     const checkAuth = async () => {
       try {
         const response = await axios.get(
-          "https://server-esw.up.railway.app/api/v1/users/profileAdmin",
+          `${BASE_URL}/users/profileAdmin`,
           { withCredentials: true }
         );
         setIsAuthenticated(true);

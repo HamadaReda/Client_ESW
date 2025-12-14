@@ -13,6 +13,7 @@ import { inputTextStyle } from "../../../layout/inputTextStyle";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
+import {BASE_URL} from "../../../constants"
 
 const OrderDataTable = () => {
   const [allOrders, setAllOrders] = useState([]); 
@@ -21,7 +22,7 @@ const OrderDataTable = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get("https://server-esw.up.railway.app/api/v1/orders", {
+      const response = await axios.get(`${BASE_URL}/orders`, {
         withCredentials: true, 
       });
       const orders = response.data.data.orders;
@@ -79,7 +80,7 @@ const OrderDataTable = () => {
 
 const handleDeleteOrder = async (id) => {
   try {
-    const response = await axios.delete(`https://server-esw.up.railway.app/api/v1/orders/${id}`, {
+    const response = await axios.delete(`${BASE_URL}/orders/${id}`, {
       withCredentials: true,
       headers: {
         'Content-Type': 'application/json', 

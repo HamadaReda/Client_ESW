@@ -28,7 +28,7 @@ export const ChangePassword = () => {
     try {
       setLoading(true);
       const response = await axios.patch(
-        `https://server-esw.up.railway.app/api/v1/users/change-password`,
+        `${BASE_URL}/users/change-password`,
         { currentPassword, newPassword },
         { withCredentials: true }
       );

@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Toast } from "primereact/toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../constants";
 
 const ContactPage = () => {
   const [name, setName] = useState("");
@@ -21,7 +22,7 @@ const ContactPage = () => {
 
     try {
       const response = await axios.post(
-        "https://server-esw.up.railway.app/api/v1/users/send-message",
+        `${BASE_URL}/users/send-message`,
         messageData,
         { withCredentials: true }
       );

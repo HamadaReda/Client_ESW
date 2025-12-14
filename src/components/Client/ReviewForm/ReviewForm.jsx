@@ -4,6 +4,7 @@ import { Button } from 'primereact/button';
 import { Rating } from 'primereact/rating';
 import { Toast } from 'primereact/toast';
 import axios from 'axios';
+import { BASE_URL } from '../../../constants';
 
 const Tailwind = {
   form: {
@@ -29,7 +30,7 @@ const ReviewForm = ({ productId, onClose }) => {
   useEffect(() => {
     const fetchReview = async () => {
       try {
-        const response = await axios.get(`https://server-esw.up.railway.app/api/v1/reviews/product/${productId}/my-review`, { withCredentials: true });
+        const response = await axios.get(`${BASE_URL}/reviews/product/${productId}/my-review`, { withCredentials: true });
         const reviews = response.data.data;
         
         if (reviews.length > 0) {
@@ -65,13 +66,13 @@ const ReviewForm = ({ productId, onClose }) => {
       let response;
       if (isEditing) {
         response = await axios.patch(
-          `https://server-esw.up.railway.app/api/v1/reviews/${reviewId}`,
+          `${BASE_URL}/reviews/${reviewId}`,
           reviewData,
           { withCredentials: true }
         );
       } else {
         response = await axios.post(
-          `https://server-esw.up.railway.app/api/v1/reviews/product/${productId}`,
+          `${BASE_URL}/reviews/product/${productId}`,
           reviewData,
           { withCredentials: true }
         );
@@ -97,7 +98,7 @@ const ReviewForm = ({ productId, onClose }) => {
   const handleDelete = async () => {
     setLoading(true);
     try {
-      const response = await axios.delete(`https://server-esw.up.railway.app/api/v1/reviews/${reviewId}`, { withCredentials: true });
+      const response = await axios.delete(`${BASE_URL}/reviews/${reviewId}`, { withCredentials: true });
       
       if (response.data.status === 'success') {
         toast.current.show({ severity: 'success', summary: 'Success', detail: 'Review deleted successfully!', life: 3000 });

@@ -8,6 +8,7 @@ import CustomEditor from "../../../components/Admin/CustomEditor";
 import MediaUploadMultiple from "../../../components/Admin/MediaUpload/MediaUploadMultible";
 import GoBackButton from "../../../components/Admin/Buttons/GoBackButton";
 import axios from "axios";
+import { BASE_URL } from "../../../constants";
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ const AddProduct = () => {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          "https://server-esw.up.railway.app/api/v1/categories",
+          `${BASE_URL}/categories`,
           { withCredentials: true }
         );
         setCategories(data.data.categories);
@@ -64,7 +65,7 @@ const AddProduct = () => {
 
     try {
       const response = await axios.post(
-        "https://server-esw.up.railway.app/api/v1/products",
+        `${BASE_URL}/products`,
         formData,
         { headers: { "Content-Type": "application/json" }, withCredentials: true }
       );
@@ -92,7 +93,7 @@ const AddProduct = () => {
       try {
 
         const response = await axios.patch(
-          `https://server-esw.up.railway.app/api/v1/products/product-photos-upload/${productId}`,
+          `${BASE_URL}/products/product-photos-upload/${productId}`,
           formGalleryData,
           {
             withCredentials: true,

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import axios from "axios"; // تأكد من استيراد axios
 import { Toast } from "primereact/toast";
 import { classNames } from "primereact/utils";
+import { BASE_URL } from "../../constants";
 
 const CheckoutPage = () => {
   const [cartProducts, setCartProducts] = useState([]);
@@ -62,7 +63,7 @@ const CheckoutPage = () => {
     try {
       // إرسال الطلب لإنشاء الطلب
       const response = await axios.post(
-        "https://server-esw.up.railway.app/api/v1/orders/make-order",
+        `${BASE_URL}/orders/make-order`,
         orderData,
         { withCredentials: true }
       );

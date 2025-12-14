@@ -3,6 +3,7 @@ import axios from "axios"; // تأكد من استيراد axios
 import CardSection from "../../components/Admin/Dashboard/CardSection";
 import ChartSection from "../../components/Admin/Dashboard/ChartSection";
 import TabelSection from "../../components/Admin/Dashboard/TabelSection";
+import { BASE_URL } from "../../constants";
 
 const Dashboard = () => {
   const [product, setProduct] = useState(null); // متغير لتخزين البيانات
@@ -20,7 +21,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("https://server-esw.up.railway.app/api/v1/products");
+        const response = await axios.get(`${BASE_URL}/products`);
         const products = response.data.data.products;
         const count = response.data.data.count; // الحصول على عدد المنتجات
 
@@ -37,7 +38,7 @@ const Dashboard = () => {
 
     const fetchOrders = async () => {
       try {
-        const response = await axios.get("https://server-esw.up.railway.app/api/v1/orders", {
+        const response = await axios.get(`${BASE_URL}/orders`, {
           withCredentials: true,
         });
         const fetchedOrders = response.data.data.orders;
@@ -70,7 +71,7 @@ const Dashboard = () => {
 
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get("https://server-esw.up.railway.app/api/v1/admins", {
+        const response = await axios.get(`${BASE_URL}/admins`, {
           withCredentials: true,
         });
 

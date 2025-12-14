@@ -7,6 +7,7 @@ import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../../constants";
 
 const SingleOrderDetails = () => {
   const { id } = useParams();
@@ -36,7 +37,7 @@ const SingleOrderDetails = () => {
   useEffect(() => {
     const fetchOrderData = async () => {
       try {
-        const response = await axios.get(`https://server-esw.up.railway.app/api/v1/orders/${id}`, {
+        const response = await axios.get(`${BASE_URL}/orders/${id}`, {
           withCredentials: true,
         });
 
@@ -66,7 +67,7 @@ const SingleOrderDetails = () => {
 
     try {
       const updateResponse = await axios.patch(
-        `https://server-esw.up.railway.app/api/v1/orders/${id}`,
+        `${BASE_URL}/orders/${id}`,
         {
           status: orderStatus, // Only update the status
         },

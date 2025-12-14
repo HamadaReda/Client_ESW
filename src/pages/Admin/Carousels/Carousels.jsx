@@ -13,6 +13,7 @@ import { inputTextStyle } from "../../../layout/inputTextStyle";
 import { Button } from "primereact/button";
 import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast"; // Import the Toast component
+import { BASE_URL } from "../../../constants";
 
 export const Carousels = () => {
   const [carousels, setCarousels] = useState([]);
@@ -26,7 +27,7 @@ export const Carousels = () => {
   useEffect(() => {
     const fetchCarousels = async () => {
       try {
-        const response = await axios.get("https://server-esw.up.railway.app/api/v1/carousels", {
+        const response = await axios.get(`${BASE_URL}/carousels`, {
           withCredentials: true,
         });
         if (response.data.status === "success") {
@@ -59,7 +60,7 @@ export const Carousels = () => {
 
   const deleteCarousel = async (id) => {
     try {
-      const response = await axios.delete(`https://server-esw.up.railway.app/api/v1/carousels/${id}`, {
+      const response = await axios.delete(`${BASE_URL}/carousels/${id}`, {
         withCredentials: true,
       });
       if (response.data.status === "success") {

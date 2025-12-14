@@ -1,18 +1,12 @@
-import products from "./../data/products.json";
-import users from "./../data/users.json";
-import orders from "./../data/orders.json";
-import comments from "./../data/comments.json";
-import reviews from "./../data/reviews.json";
-import collections from "./../data/collections.json";
 import { DELETE_ORDER, EDIT_ORDER} from './Action';
 
 const initialState = {
-  allProducts: products,
-  allUsers: users,
-  allOrders: orders,
-  allComments: comments,
-  allReviews: reviews,
-  allCollections: collections,
+  // allProducts: products,
+  // allUsers: users,
+  // allOrders: orders,
+  // allComments: comments,
+  // allReviews: reviews,
+  // allCollections: collections,
 };
 
 const reducer = (state = initialState, action) => {

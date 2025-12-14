@@ -4,6 +4,7 @@ import DarkModeSwitcher from "../../components/Admin/Header/DarkModeSwitcher";
 import { Toast } from "primereact/toast"; // PrimeReact Toast
 import { useNavigate, Link } from "react-router-dom"; // For redirection and linking
 import axios from "axios"; // Importing axios
+import { BASE_URL } from "../../constants";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://server-esw.up.railway.app/api/v1/users/login",
+        `${BASE_URL}/users/login`,
         {
           email,
           password,

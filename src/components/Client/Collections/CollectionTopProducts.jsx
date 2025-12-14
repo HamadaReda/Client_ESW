@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import LoadingCard from "../Card/LoadingCard";
 import { Link } from "react-router-dom";
 import Card from "../Card/Card";
+import { BASE_URL } from "../../../constants";
 
 const CollectionTopProducts = ({
   title,
@@ -22,7 +23,7 @@ const CollectionTopProducts = ({
       try {
         // طلب API باستخدام pagination و category
         const response = await axios.get(
-          `https://server-esw.up.railway.app/api/v1/products`,
+          `${BASE_URL}/products`,
           { params: { categories: productQuery } }
         );
 

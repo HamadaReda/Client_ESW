@@ -11,7 +11,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `https://server-esw.up.railway.app/api/v1/users/password/forget-password`,
+        `${BASE_URL}/users/password/forget-password`,
         { email },
         { withCredentials: true }
       );

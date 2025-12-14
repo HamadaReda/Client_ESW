@@ -31,7 +31,7 @@ const UpdateCarousels = () => {
     const fetchCarouselData = async () => {
       try {
         const response = await axios.get(
-          `https://server-esw.up.railway.app/api/v1/carousels/${id}`, // Ensure correct endpoint
+          `${BASE_URL}/carousels/${id}`, // Ensure correct endpoint
           {
             withCredentials: true,
           }
@@ -78,7 +78,7 @@ const UpdateCarousels = () => {
 
       // Update carousel using PATCH request
       const updateResponse = await axios.patch(
-        `https://server-esw.up.railway.app/api/v1/carousels/${id}`, // Ensure correct endpoint
+        `${BASE_URL}/carousels/${id}`, // Ensure correct endpoint
         formData,
         {
           headers: {
@@ -93,7 +93,7 @@ const UpdateCarousels = () => {
 
         // رفع الصورة
         const imageResponse = await axios.patch(
-          `https://server-esw.up.railway.app/api/v1/carousels/carousel-photo-upload/${id}`,
+          `${BASE_URL}/carousels/carousel-photo-upload/${id}`,
           formData,
           {
             withCredentials: true,

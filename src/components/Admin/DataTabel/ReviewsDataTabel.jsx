@@ -14,6 +14,7 @@ import { Button } from "primereact/button";
 import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast";
 import { Rating } from "primereact/rating"; // Import Rating for stars
+import { BASE_URL } from "../../../constants";
 
 export const ReviewsDataTabel = () => {
   const [reviews, setReviews] = useState([]);
@@ -27,7 +28,7 @@ export const ReviewsDataTabel = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get("https://server-esw.up.railway.app/api/v1/reviews", {
+        const response = await axios.get(`${BASE_URL}/reviews`, {
           withCredentials: true,
         });
         if (response.data.status === "success") {
@@ -68,7 +69,7 @@ export const ReviewsDataTabel = () => {
 
   const deleteReview = async (id) => {
     try {
-      const response = await axios.delete(`https://server-esw.up.railway.app/api/v1/reviews/${id}`, {
+      const response = await axios.delete(`${BASE_URL}/reviews/${id}`, {
         withCredentials: true,
       });
       if (response.data.status === "success") {

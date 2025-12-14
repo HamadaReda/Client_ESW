@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaEye } from 'react-icons/fa';
 import ReviewForm from '../../components/Client/ReviewForm/ReviewForm'; // Import the ReviewForm component
+import { BASE_URL } from '../../constants';
 
 const OrderHistory = () => {
   const [orders, setOrders] = useState([]);
@@ -14,7 +15,7 @@ const OrderHistory = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('https://server-esw.up.railway.app/api/v1/orders/my-orders', {
+      const response = await axios.get(`${BASE_URL}/orders/my-orders`, {
         withCredentials: true,
       });
       console.log('API Response:', response.data);

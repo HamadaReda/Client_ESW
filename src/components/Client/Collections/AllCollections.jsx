@@ -3,6 +3,7 @@ import { Paginator } from "primereact/paginator";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import SimpleLoadingCard from "../Card/SimpleLoadingCard";
+import { BASE_URL } from "../../../constants";
 
 const AllCollections = () => {
   const [collections, setCollections] = useState([]); // إدارة البيانات محليًا
@@ -15,7 +16,7 @@ const AllCollections = () => {
     const fetchCollections = async () => {
       try {
         const response = await axios.get(
-          "https://server-esw.up.railway.app/api/v1/categories"
+          `${BASE_URL}/categories`
         );
         setCollections(response.data.data.categories);
         setLoading(false);

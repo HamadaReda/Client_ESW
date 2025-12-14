@@ -4,6 +4,7 @@ import DropdownList from "./DropdownList"; // Import the dropdown list
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Toast } from "primereact/toast"; // Assuming you use PrimeReact for toasts
+import { BASE_URL } from "../../../constants";
 
 const UserDropdown = ({ firstname, avatarUrl, onClose }) => {
   const [visible, setVisible] = useState(false); // State to control visibility of dropdown
@@ -15,7 +16,7 @@ const UserDropdown = ({ firstname, avatarUrl, onClose }) => {
   const handleLogout = async () => {
     try {
       const response = await axios.post(
-        "https://server-esw.up.railway.app/api/v1/users/logout", // Your API logout route
+        `${BASE_URL}/users/logout`, // Your API logout route
         {},
         { withCredentials: true }
       );

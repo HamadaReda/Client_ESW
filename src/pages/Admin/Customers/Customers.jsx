@@ -12,6 +12,7 @@ import { dataTabelStyle } from "../../../layout/dataTabelStyle";
 import { inputTextStyle } from "../../../layout/inputTextStyle";
 import { Button } from "primereact/button";
 import { ConfirmPopup, confirmPopup } from 'primereact/confirmpopup'; 
+import { BASE_URL } from "../../../constants";
 
 export const Customers = () => {
   const [customers, setCustomers] = useState([]); // State for customers
@@ -24,7 +25,7 @@ export const Customers = () => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await axios.get('https://server-esw.up.railway.app/api/v1/admins', {
+        const response = await axios.get(`${BASE_URL}/admins`, {
           withCredentials: true,
         });
         if (response.data.status === "success") {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../../../constants';
 
 const ProductTap = ({ description, id }) => {
   const [activeTab, setActiveTab] = useState('description');
@@ -14,7 +15,7 @@ const ProductTap = ({ description, id }) => {
 
 
       // Make the request with the Authorization header
-      axios.get(`https://server-esw.up.railway.app/api/v1/reviews/product/${id}`, {
+      axios.get(`${BASE_URL}/reviews/product/${id}`, {
          withCredentials: true 
         })
         .then((response) => {

@@ -14,7 +14,7 @@ const DropdownList = ({ handleSignOut , showProfileAdmin }) => {
     const checkAuth = async () => {
       try {
         const response = await axios.get(
-          "https://server-esw.up.railway.app/api/v1/users/profileAdmin",
+          `${BASE_URL}/users/profileAdmin`,
           { withCredentials: true }
         );
 

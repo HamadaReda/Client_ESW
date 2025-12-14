@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import LoadingCard from "./Card/LoadingCard";
 import { Link } from "react-router-dom";
 import Card from "./Card/Card";
+import { BASE_URL } from "../../constants";
 
 const FeaturedItems = ({ title, productQuery, productCount, topRating }) => {
   const [products, setProducts] = useState([]); // تخزين المنتجات
@@ -20,7 +21,7 @@ const FeaturedItems = ({ title, productQuery, productCount, topRating }) => {
       try {
         // طلب API باستخدام pagination و category
         const response = await axios.get(
-          `https://server-esw.up.railway.app/api/v1/products/featured-products`,
+          `${BASE_URL}/products/featured-products`,
           { params: params }
         );
 

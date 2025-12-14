@@ -10,6 +10,7 @@ import { Toast } from "primereact/toast";
 import MediaUpload from "../../../components/Admin/MediaUpload/MediaUpload";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../../../constants";
 
 const UpdateCollection = () => {
   const { id } = useParams(); // الحصول على الـ id من الـ URL
@@ -25,7 +26,7 @@ const UpdateCollection = () => {
     const fetchCollectionData = async () => {
       try {
         const response = await axios.get(
-          `https://server-esw.up.railway.app/api/v1/categories/${id}`
+          `${BASE_URL}/categories/${id}`
         );
         const { title, description, image } = response.data.data;
         setTitle(title);
@@ -55,7 +56,7 @@ const UpdateCollection = () => {
 
       // تحديث البيانات باستخدام PUT أو PATCH
       const updateResponse = await axios.patch(
-        `https://server-esw.up.railway.app/api/v1/categories/${id}`,
+        `${BASE_URL}/categories/${id}`,
         formData,
         {
           headers: {
@@ -78,7 +79,7 @@ const UpdateCollection = () => {
 
         // رفع الصورة
         const imageResponse = await axios.patch(
-          `https://server-esw.up.railway.app/api/v1/categories/category-photo-upload/${id}`,
+          `${BASE_URL}/categories/category-photo-upload/${id}`,
           formData,
           {
             headers: {

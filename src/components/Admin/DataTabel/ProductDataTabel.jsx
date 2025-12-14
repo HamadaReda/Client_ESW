@@ -13,6 +13,7 @@ import { inputTextStyle } from "../../../layout/inputTextStyle";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import { ConfirmPopup, confirmPopup } from "primereact/confirmpopup";
+import { BASE_URL } from "../../../constants";
 
 
 const ProductDataTabel = () => {
@@ -23,7 +24,7 @@ const ProductDataTabel = () => {
   // Fetch products from the API with credentials
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("https://server-esw.up.railway.app/api/v1/products", {
+      const response = await axios.get(`${BASE_URL}/products`, {
         withCredentials: true, // Send credentials with the request
       });
       const products = response.data.data.products;
@@ -74,7 +75,7 @@ const ProductDataTabel = () => {
 
   const handleDeleteProduct = async (id) => {
     try {
-      const response = await axios.delete(`https://server-esw.up.railway.app/api/v1/products/${id}`, {
+      const response = await axios.delete(`${BASE_URL}/products/${id}`, {
         withCredentials: true, // This allows credentials to be sent with the request
         headers: {
           'Content-Type': 'application/json', // Set content type if necessary

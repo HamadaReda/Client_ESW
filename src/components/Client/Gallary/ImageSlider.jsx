@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { BASE_URL } from '../../../constants';
 
 const ImageSlider = () => {
   const [slides, setSlides] = useState([]);
@@ -11,7 +12,7 @@ const ImageSlider = () => {
   useEffect(() => {
     const fetchSlides = async () => {
       try {
-        const response = await fetch('https://server-esw.up.railway.app/api/v1/carousels');
+        const response = await fetch(`${BASE_URL}/carousels`);
         const data = await response.json();
 
         if (data.status === 'success') {

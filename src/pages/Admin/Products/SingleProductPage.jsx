@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Dropdown } from "primereact/dropdown";
 import MediaUploadMultiple from "../../../components/Admin/MediaUpload/MediaUploadMultible"
+import { BASE_URL } from "../../../constants";
 const SingleProductPage = () => {
   const { id } = useParams();
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ const SingleProductPage = () => {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
-          "https://server-esw.up.railway.app/api/v1/categories",
+          `${BASE_URL}/categories`,
           { withCredentials: true }
         );
         setCategories(data.data.categories);
@@ -47,7 +48,7 @@ const SingleProductPage = () => {
     const fetchExistData = async () => {
       try {
         const ProductDataResponse = await axios.get(
-          `https://server-esw.up.railway.app/api/v1/products/${id}`,
+          `${BASE_URL}/products/${id}`,
           { withCredentials: true }
         );
         const data = ProductDataResponse.data.data;
@@ -94,7 +95,7 @@ const SingleProductPage = () => {
     console.log("submit data ", formData)
     try {
       const response = await axios.patch(
-        `https://server-esw.up.railway.app/api/v1/products/${id}`,
+        `${BASE_URL}/products/${id}`,
         formData,
         { headers: { "Content-Type": "application/json" }, withCredentials: true }
       );
@@ -120,7 +121,7 @@ const SingleProductPage = () => {
       try {
         setImageLoading(true);
         const response = await axios.patch(
-          `https://server-esw.up.railway.app/api/v1/products/product-photos-upload/${id}`,
+          `${BASE_URL}/products/product-photos-upload/${id}`,
           formGalleryData,
           {
             withCredentials: true,

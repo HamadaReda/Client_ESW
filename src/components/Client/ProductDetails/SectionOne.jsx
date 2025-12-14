@@ -8,6 +8,7 @@ import ProductPrice from './ProductPrice';
 import ShoppingCartSidebar from '../SideBar/ShoppingCartSidebar';
 import axios from 'axios';
 import ProductTap from './ProductTap';
+import { BASE_URL } from '../../../constants';
 
 const Paragraph = styled.p`
   font-size: 1.4rem;
@@ -36,7 +37,7 @@ const SectionOne = () => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        const response = await axios.get(`https://server-esw.up.railway.app/api/v1/products/${id}`);
+        const response = await axios.get(`${BASE_URL}/products/${id}`);
         if (response.status === 200) {
           setProduct(response.data.data);
           // Check localStorage for the product

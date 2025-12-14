@@ -12,6 +12,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "primeicons/primeicons.css";
 import { Dropdown } from "primereact/dropdown";
+import { BASE_URL } from "../../../constants";
 
 const AddCarousels = () => {
   const [title, setTitle] = useState("");
@@ -27,7 +28,7 @@ const AddCarousels = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('https://server-esw.up.railway.app/api/v1/categories', {
+        const response = await axios.get(`${BASE_URL}/categories`, {
           withCredentials: true,
         });
         setCategories(response.data.data.categories);
@@ -60,7 +61,7 @@ const submitForm = async (e) => {
   try {
     // Step 1: Submit the form data (title, description, category, buttonText)
     const response = await axios.post(
-      "https://server-esw.up.railway.app/api/v1/carousels",
+      `${BASE_URL}/carousels`,
       {
         title,
         description,
@@ -84,7 +85,7 @@ const submitForm = async (e) => {
         formImageData.append("image", image);  // Append the image file to FormData
 
         await axios.patch(
-          `https://server-esw.up.railway.app/api/v1/carousels/carousel-photo-upload/${carouselId}`,
+          `${BASE_URL}/carousels/carousel-photo-upload/${carouselId}`,
           formImageData,
           { 
             withCredentials: true, // Allow credentials for cross-origin requests

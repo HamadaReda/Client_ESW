@@ -8,6 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
 import axios from "axios"; // Import axios
+import { BASE_URL } from "../../constants";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -39,7 +40,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "https://server-esw.up.railway.app/api/v1/users/register",
+        `${BASE_URL}/users/register`,
         userData,
         {
           headers: {

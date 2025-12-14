@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../common/Loader";
+import { BASE_URL } from "../../constants";
 
 const TokenValidation = () => {
   const [loading, setLoading] = useState(true); // Add loading state
@@ -12,7 +13,7 @@ const TokenValidation = () => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(
-          `https://server-esw.up.railway.app/api/v1/users/password/reset-password/${userId}/${token}`,
+          `${BASE_URL}/users/password/reset-password/${userId}/${token}`,
           { withCredentials: true }
         );
         setLoading(false); // Set loading to false when request is complete

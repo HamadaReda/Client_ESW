@@ -4,6 +4,7 @@ import { Galleria } from 'primereact/galleria';
 import axios from 'axios';
 import { galleria } from '../../../layout/galleria';
 import { useParams } from 'react-router-dom';
+import { BASE_URL } from '../../../constants';
 
 export default function ControlledDemo() {
     const [images, setImages] = useState([]);
@@ -27,7 +28,7 @@ export default function ControlledDemo() {
     useEffect(() => {
                 const fetchImages = async () => {
                     try {
-                        const response = await axios.get(`https://server-esw.up.railway.app/api/v1/products/${id}`);
+                        const response = await axios.get(`${BASE_URL}/products/${id}`);
                         if (response.status === 200) {
                             // Fetch images from API
                             const galleryImages = response.data.data.gallery.map(item => ({

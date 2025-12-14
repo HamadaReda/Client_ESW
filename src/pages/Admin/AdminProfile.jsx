@@ -22,7 +22,7 @@ export const AdminProfile = () => {
         const fetchUserData = async () => {
           setLoading(true);
           try {
-            const response = await axios.get(`https://server-esw.up.railway.app/api/v1/users/profileAdmin`, { withCredentials: true });
+            const response = await axios.get(`${BASE_URL}/users/profileAdmin`, { withCredentials: true });
             const userData = response.data.data;
             setFirstName(userData.firstName);
             setLastName(userData.lastName);
@@ -50,7 +50,7 @@ export const AdminProfile = () => {
     
         try {
           const response = await axios.patch(
-            `https://server-esw.up.railway.app/api/v1/users/update`,
+            `${BASE_URL}/users/update`,
             { firstName, lastName, email, phone },
             { withCredentials: true }
           );

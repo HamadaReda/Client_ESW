@@ -13,6 +13,7 @@ import axios from "axios";
 import { SelectButton } from "primereact/selectbutton";
 
 import "primeicons/primeicons.css";
+import { BASE_URL } from "../../../constants";
 
 const AddCollection = () => {
   const [title, setTitle] = useState("");
@@ -58,7 +59,7 @@ const AddCollection = () => {
     try {
       // إرسال الطلب لإنشاء الـ category
       const response = await axios.post(
-        "https://server-esw.up.railway.app/api/v1/categories",
+        `${BASE_URL}/categories`,
         {
           title,
           description,
@@ -82,7 +83,7 @@ const AddCollection = () => {
 
           // رفع الصورة
           const imageResponse = await axios.patch(
-            `https://server-esw.up.railway.app/api/v1/categories/category-photo-upload/${collectionId}`,
+            `${BASE_URL}/categories/category-photo-upload/${collectionId}`,
             formImageData,
             {
               withCredentials: true,
@@ -108,7 +109,7 @@ const AddCollection = () => {
 
           // رفع الصورة
           const imageResponse = await axios.patch(
-            `https://server-esw.up.railway.app/api/v1/categories/category-banner-upload/${collectionId}`,
+            `${BASE_URL}/categories/category-banner-upload/${collectionId}`,
             formBannerData,
             {
               withCredentials: true,

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, Fragment } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { BASE_URL } from '../../../constants';
 
 const SearchComponent = ({ onClose }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -10,7 +11,7 @@ const SearchComponent = ({ onClose }) => {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('https://server-esw.up.railway.app/api/v1/products');
+            const response = await axios.get(`${BASE_URL}/products`);
             const products = response.data.data.products;
 
             const formattedItems = products.map(product => ({

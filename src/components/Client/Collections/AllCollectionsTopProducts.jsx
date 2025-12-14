@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import CollectionTopProducts from "./CollectionTopProducts";
 import axios from "axios";
+import { BASE_URL } from "../../../constants";
 
 const AllCollectionsTopProducts = () => {
   const [categories, setCategories] = useState([]); // تخزين الفئات
@@ -10,7 +11,7 @@ const AllCollectionsTopProducts = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "https://server-esw.up.railway.app/api/v1/categories/"
+          `${BASE_URL}/categories/`
         );
         setCategories(response.data.data.categories); // تعيين الفئات
       } catch (error) {

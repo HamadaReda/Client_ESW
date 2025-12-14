@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"; // تأكد من استيراد axios
 import SimpleLoadingCard from "../Card/SimpleLoadingCard";
+import { API_VERSION, BASE_URL, DOMAIN_URL } from "../../../constants";
 
 const OurCollectionSection = () => {
   const [categories, setCategories] = useState([]); // تخزين الفئات
@@ -13,7 +14,7 @@ const OurCollectionSection = () => {
       setLoading(true); // تعيين حالة التحميل إلى true عند بدء الجلب
       try {
         const response = await axios.get(
-          "https://server-esw.up.railway.app/api/v1/categories/",
+          `${BASE_URL}/categories/`,
           {
             params: {
               limit: 5, // تحديد الحد بـ 5 فئات

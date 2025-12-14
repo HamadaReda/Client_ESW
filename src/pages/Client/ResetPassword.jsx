@@ -25,7 +25,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        `https://server-esw.up.railway.app/api/v1/users/password/reset-password/${userId}/${token}`,
+        `${BASE_URL}/users/password/reset-password/${userId}/${token}`,
         {
           newPassword,
         }

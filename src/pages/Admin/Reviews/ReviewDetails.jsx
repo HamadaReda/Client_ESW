@@ -5,6 +5,7 @@ import { Rating } from "primereact/rating"; // For displaying rating stars
 import { Button } from "primereact/button"; // For buttons
 import { Toast } from "primereact/toast"; // For displaying toast messages
 import GoBackButton from "../../../components/Admin/Buttons/GoBackButton";
+import { BASE_URL } from "../../../constants";
 
 const ReviewDetails = () => {
     const { id } = useParams();
@@ -21,7 +22,7 @@ const ReviewDetails = () => {
         const fetchReviewDetails = async () => {
             try {
                 const response = await axios.get(
-                    `https://server-esw.up.railway.app/api/v1/reviews/${id}`,
+                    `${BASE_URL}/reviews/${id}`,
                     { withCredentials: true }
                 );
 
@@ -45,7 +46,7 @@ const ReviewDetails = () => {
                         setComment(fetchedReview.comment || '');
 
                         const productResponse = await axios.get(
-                            `https://server-esw.up.railway.app/api/v1/products/${fetchedReview.product}`,
+                            `${BASE_URL}/products/${fetchedReview.product}`,
                             { withCredentials: true }
                         );
 
@@ -68,7 +69,7 @@ const ReviewDetails = () => {
     const handleEditReview = async () => {
         try {
             const response = await axios.patch(
-                `https://server-esw.up.railway.app/api/v1/reviews/${id}`,
+                `${BASE_URL}/reviews/${id}`,
                 { comment, rating },
                 { withCredentials: true }
             );

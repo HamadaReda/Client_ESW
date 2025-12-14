@@ -25,7 +25,7 @@ const ProfilePage = () => {
     const fetchUserData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`https://server-esw.up.railway.app/api/v1/users/profile`, { withCredentials: true });
+        const response = await axios.get(`${BASE_URL}/users/profile`, { withCredentials: true });
         const userData = response.data.data;
         setUser(userData);
         setFirstName(userData.firstName);
@@ -52,7 +52,7 @@ const ProfilePage = () => {
 
     try {
       const response = await axios.patch(
-        `https://server-esw.up.railway.app/api/v1/users/update`,
+        `${BASE_URL}/users/update`,
         { firstName, lastName, email, phone },
         { withCredentials: true }
       );
@@ -92,7 +92,7 @@ const ProfilePage = () => {
 
     try {
       const response = await axios.patch(
-        `https://server-esw.up.railway.app/api/v1/users/change-password`,
+        `${BASE_URL}/users/change-password`,
         { currentPassword, newPassword },
         { withCredentials: true }
       );

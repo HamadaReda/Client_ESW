@@ -13,7 +13,7 @@ const OrderDetails = () => {
   const [selectedProductId, setSelectedProductId] = useState(null); // State for selected productId
   const fetchOrderDetails = async () => {
     try {
-      const response = await axios.get(`https://server-esw.up.railway.app/api/v1/orders/${id}`, {
+      const response = await axios.get(`${BASE_URL}/orders/${id}`, {
         withCredentials: true,
       });
 

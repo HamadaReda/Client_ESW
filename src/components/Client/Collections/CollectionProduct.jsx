@@ -5,6 +5,7 @@ import Card from "../Card/Card";
 import LoadingCard from "../Card/LoadingCard";
 import { Dropdown } from "primereact/dropdown";
 import { dropdownClient } from "../../../layout/dropdownClient";
+import { BASE_URL } from "../../../constants";
 
 const CollectionProduct = ({ collection }) => {
   const param = collection;
@@ -27,7 +28,7 @@ const CollectionProduct = ({ collection }) => {
       try {
         // طلب API باستخدام category title
         const response = await axios.get(
-          `https://server-esw.up.railway.app/api/v1/categories/${param}`
+          `${BASE_URL}/categories/${param}`
         );
 
         if (response.data && response.data.data) {
@@ -74,7 +75,7 @@ const CollectionProduct = ({ collection }) => {
       try {
         // طلب API باستخدام pagination و category
         const response = await axios.get(
-          `https://server-esw.up.railway.app/api/v1/products`,
+          `${BASE_URL}/products`,
           {
             params: {
               categories: param, // تمرير الفئة

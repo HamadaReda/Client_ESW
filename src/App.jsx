@@ -4,7 +4,6 @@ import "./App.css";
 
 import UserRoutes from "./routes/UserRoutes";
 import AdminRoutes from "./routes/AdminRoutes";
-import Test from "./pages/Test/Test";
 
 // import PrimeReact
 import { PrimeReactProvider } from "primereact/api";
@@ -30,8 +29,6 @@ function App() {
           <Route path="/*" element={<UserRoutes />} />
           {/* Routes for admins */}
           <Route path="/admin/*" element={<AdminRoutes />} />
-          {/* Routes for testing */}
-          <Route path="/test/*" element={<Test />} />
         </Routes>
       </PrimeReactProvider>
     </div>
