@@ -4,6 +4,7 @@ import axios from "axios";
 import ProfilePictureUpload from "../../components/Client/ProfilePictureUpload";
 import { Toast } from "primereact/toast";
 import { AiOutlineLock, AiOutlineMail, AiOutlinePhone, AiOutlineUser } from "react-icons/ai";
+import { BASE_URL } from "../../constants";
 
 const ProfilePage = () => {
   const { id } = useParams();

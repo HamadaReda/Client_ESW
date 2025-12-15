@@ -5,6 +5,7 @@ import ProfilePictureUpload from "../../components/Client/ProfilePictureUpload";
 import { Toast } from "primereact/toast"; 
 import { AiOutlineLock, AiOutlineMail, AiOutlinePhone, AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../constants";
 
 export const AdminProfile = () => {
     const [firstName, setFirstName] = useState("");

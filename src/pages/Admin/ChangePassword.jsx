@@ -3,6 +3,7 @@ import { Toast } from "primereact/toast";
 import { AiOutlineLock } from "react-icons/ai";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../constants";
 
 export const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState("");

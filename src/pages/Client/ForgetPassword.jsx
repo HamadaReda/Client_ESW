@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import { Toast } from "primereact/toast";
 import DarkModeSwitcher from "../../components/Admin/Header/DarkModeSwitcher";
+import { BASE_URL } from "../../constants";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");

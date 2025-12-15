@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FaEye } from 'react-icons/fa';
+import { BASE_URL } from '../../constants';
 
 const OrderDetails = () => {
   const [order, setOrder] = useState(null);

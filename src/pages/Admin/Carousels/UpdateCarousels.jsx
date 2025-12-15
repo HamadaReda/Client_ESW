@@ -11,6 +11,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { SelectButton } from "primereact/selectbutton";
 import { Dropdown } from "primereact/dropdown";
+import { BASE_URL } from "../../../constants";
 
 const UpdateCarousels = () => {
   const { id } = useParams(); // Get id from URL

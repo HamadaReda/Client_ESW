@@ -3,6 +3,7 @@ import axios from "axios";
 import DarkModeSwitcher from "../../components/Admin/Header/DarkModeSwitcher";
 import { useNavigate, useParams } from "react-router-dom";
 import { Toast } from "primereact/toast"; // Importing the Toast component
+import { BASE_URL } from "../../constants";
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
